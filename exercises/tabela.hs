@@ -1,0 +1,4 @@
+
+
+-- ghci
+-- :l tabela.hs
