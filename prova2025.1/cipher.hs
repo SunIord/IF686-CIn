@@ -38,7 +38,7 @@ data ChaveTree = Node Char Char ChaveTree ChaveTree | Leaf
 chaveParcial :: ChaveTree
 chaveParcial = Node 'I' 'L' (Node 'A' 'D' Leaf(Node 'E' 'X' Leaf Leaf))
                             (Node 'L' 'O' Leaf Leaf)
-ryptT chaveParcial "A LIGEIRA RAPOSA"
+
 -- Exemplo.: cryptT chaveParcial "A LIGEIRA RAPOSA" -> "D OLGXLRD RDPOSD"
 cryptT :: ChaveTree -> String -> String
 cryptT i [] = []
