@@ -44,6 +44,7 @@ class Main {
         System.out.println("Estoque: " + p.getQtdEstoque());
 
         // Alterando valores
+        p.setDescricao("Maizena");
         p.setValor(6.00);
         p.setQtdEstoque(80);
 
