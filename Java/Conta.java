@@ -15,13 +15,13 @@ public class Conta {
 
     // Métodos
     public void creditar(double valor) {
-        saldo = saldo + valor;
+        saldo += valor;
     } 
     public void debitar(double valor) {
-        if (valor <= saldo) {saldo = saldo - valor;}
+        if (valor <= saldo) {saldo -= valor;}
     }
 
-    // Getters e Setters
+    // Getters
     public String getNumero() {
         return numero;
     }
