@@ -1,15 +1,15 @@
 public class Banco {
-    private Conta[] contas;
+    private ContaAbstrata[] contas;
     private int indice;
     private double  taxaJuros;
 
     public Banco () {
-        contas = new Conta[100];
+        contas = new ContaAbstrata[100];
         indice = 0;
         taxaJuros = 0.01;
     }
 
-    public void cadastrar(Conta conta) {
+    public void cadastrar(ContaAbstrata conta) {
         contas[indice] = conta;
         indice++;
     }
@@ -60,8 +60,8 @@ public class Banco {
     }
 
     public void transferir(String origem, String destino, double valor) {
-        Conta contaOrigem = null;
-        Conta contaDestino = null;
+        ContaAbstrata contaOrigem = null;
+        ContaAbstrata contaDestino = null;
         for (int i = 0; i < indice; i++) {
             if (contas[i].getNumero().equals(origem)) {
                 contaOrigem = contas[i];
@@ -74,38 +74,5 @@ public class Banco {
             contaOrigem.debitar(valor);
             contaDestino.creditar(valor);
         }
-    }
-}
-
-class Programa {
-    public static void main(String[] args) {
-        Banco banco = new Banco();
-
-        Conta c1 = new Conta("001", 100);
-        Conta c2 = new Conta("002", 200);
-        Conta c3 = new Conta("003", 300);
-        ContaEspecial c4 = new ContaEspecial("004", 500);
-
-        banco.cadastrar(c1);
-        banco.cadastrar(c2);
-        banco.cadastrar(c3);
-        banco.cadastrar(c4);
-
-        banco.creditar("001", 50);
-        banco.debitar("002", 30);
-        banco.creditar("003", 100);
-
-        banco.renderJuros("001");
-
-        banco.renderBonus("004");
-
-        banco.transferir("001", "002", 50);
-
-        System.out.println(banco.getSaldo("001"));
-        System.out.println(banco.getSaldo("002"));
-        System.out.println(banco.getSaldo("003"));
-        System.out.println(banco.getSaldo("004"));
-
-        System.out.println(c4.getBonus());
     }
 }

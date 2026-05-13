@@ -69,24 +69,24 @@ class Aluno {
     }
 }
 
-class TestaAluno {
-    public static void main(String[] args) {
-        Curso c = new Curso("IF686", "PLC");
-        Aluno a = new Aluno("João", "123.456.789-01", 21, c);
-        
-        System.out.println("Nome: " + a.getNome());
-        System.out.println("CPF: " + a.getCpf());
-        System.out.println("Idade: " + a.getIdade());
-        System.out.println("Curso: " + a.getCurso().getNome());
-        System.out.println("Codigo do Curso: " + a.getCurso().getCodigo());
-
-        a.setNome("Pedro");
-        c.setCodigo("CIN0145");
-        c.setNome("Programação Concorrente");
-        
-        System.out.println("\nDepois das alteracoes:");
-        System.out.println("Nome: " + a.getNome());
-        System.out.println("Codigo do Curso: " + a.getCurso().getCodigo());   
-        System.out.println("Curso: " + a.getCurso().getNome()); 
-    }
-}
+//class TestaAluno {
+//    public static void main(String[] args) {
+//       Curso c = new Curso("IF686", "PLC");
+//        Aluno a = new Aluno("João", "123.456.789-01", 21, c);
+//        
+//        System.out.println("Nome: " + a.getNome());
+//        System.out.println("CPF: " + a.getCpf());
+//        System.out.println("Idade: " + a.getIdade());
+//        System.out.println("Curso: " + a.getCurso().getNome());
+//        System.out.println("Codigo do Curso: " + a.getCurso().getCodigo());
+//
+//       a.setNome("Pedro");
+//        c.setCodigo("CIN0145");
+//        c.setNome("Programação Concorrente");
+//        
+//        System.out.println("\nDepois das alteracoes:");
+//        System.out.println("Nome: " + a.getNome());
+//       System.out.println("Codigo do Curso: " + a.getCurso().getCodigo());   
+//        System.out.println("Curso: " + a.getCurso().getNome()); 
+//    }
+//}

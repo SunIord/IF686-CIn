@@ -34,7 +34,7 @@ public class Produto {
     }
 }
 
-class Main {
+/*class Main {
     public static void main(String[] args) {
         Produto p = new Produto("Amido de milho", 5.49, 72);
         
@@ -54,4 +54,4 @@ class Main {
         System.out.println("Valor: " + p.getValor());
         System.out.println("Estoque: " + p.getQtdEstoque());
     }
-}
+}*/
