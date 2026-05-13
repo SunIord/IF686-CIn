@@ -1,6 +1,8 @@
 public class Programa {
     public static void main(String[] args) {
-        Banco banco = new Banco();
+        RepositorioContas repositorio = new RepositorioContasArray();
+        Banco banco = new Banco(repositorio);
+
         Conta c1 = new Conta("1", 1000);
         Poupanca p1 = new Poupanca("2", 1000);
         ContaEspecial ce = new ContaEspecial("3", 1000);
