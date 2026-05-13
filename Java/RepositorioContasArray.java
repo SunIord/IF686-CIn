@@ -20,7 +20,7 @@ public class RepositorioContasArray implements RepositorioContas {
                 return contas[i];
             }
         }
-        return null;RepositorioContas
+        return null;
     }
     
     @Override
