@@ -2,19 +2,35 @@ public class Programa {
     public static void main(String[] args) {
         RepositorioContas repositorio = new RepositorioContasArray();
         Banco banco = new Banco(repositorio);
-
         Conta c1 = new Conta("1", 1000);
-        Poupanca p1 = new Poupanca("2", 1000);
-        ContaEspecial ce = new ContaEspecial("3", 1000);
-        ContaImposto ci = new ContaImposto("4", 1000);
 
-        banco.cadastrar(c1);
-        banco.cadastrar(p1);
-        banco.cadastrar(ce);
-        banco.cadastrar(ci);
+        try {
+            banco.cadastrar(c1);
+            System.out.println("Conta cadastrada com sucesso.");
+        } catch (ContaJaCadastradaException e) {
+            System.out.println(e.getMessage());
+        }
 
-        banco.debitar("4", 100);
+        try {
+            banco.cadastrar(c1);
+        } catch (ContaJaCadastradaException e) {
+            System.out.println(e.getMessage());
+        }
 
-        System.out.println(ci.getSaldo());
+        try {
+            banco.debitar("1", 5000);
+        } catch (SaldoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (ContaNaoEncontradaException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            banco.debitar("999", 100);
+        } catch (SaldoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (ContaNaoEncontradaException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

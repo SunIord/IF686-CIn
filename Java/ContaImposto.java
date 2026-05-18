@@ -10,10 +10,12 @@ public class ContaImposto extends ContaAbstrata{
         saldo += valor;
     }
     @Override
-    public void debitar(double valor) {
+    public void debitar(double valor) throws SaldoInsuficienteException {
         double imposto = (valor * CPMF);
         if (valor + imposto <= saldo) {
             saldo -= (valor + imposto);
+        } else {
+            throws new SaldoInsuficienteException();
         }
     }
 

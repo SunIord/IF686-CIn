@@ -14,8 +14,12 @@ public class Conta extends ContaAbstrata{
         saldo += valor;
     } 
     @Override
-    public void debitar(double valor) {
-        if (valor <= saldo) {saldo -= valor;}
+    public void debitar(double valor) throws SaldoInsuficienteException {
+        if (valor <= saldo) {
+            saldo -= valor;
+        } else {
+            throw new SaldoInsuficienteException();
+        }
     }
 }
 

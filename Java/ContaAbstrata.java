@@ -9,7 +9,7 @@ public abstract class ContaAbstrata {
     
     public abstract void creditar(double valor);
 
-    public abstract void debitar(double valor);
+    public abstract void debitar(double valor) throws SaldoInsuficienteException;
 
     public String getNumero() {
         return numero;

@@ -7,11 +7,14 @@ public class Banco {
         this.taxaJuros = 0.01;
     }
 
-    public void cadastrar(ContaAbstrata conta) {
+    public void cadastrar(ContaAbstrata conta) throws ContaJaCadastradaException {
+        if (repositorio.existe(conta.getNumero())) {
+            throw new ContaJaCadastradaException();
+        }
         repositorio.inserir(conta);
     }
 
-    public void creditar(String numero, double valor) {
+    public void creditar(String numero, double valor) throws ContaNaoEncontradaException {
         ContaAbstrata conta = repositorio.procurar(numero);
 
         if (conta != null) {
@@ -20,7 +23,7 @@ public class Banco {
         }
     }
 
-    public void debitar(String numero, double valor) {
+    public void debitar(String numero, double valor) throws ContaNaoEncontradaException, SaldoInsuficienteException {
         ContaAbstrata conta = repositorio.procurar(numero);
 
         if (conta != null) {
@@ -29,7 +32,7 @@ public class Banco {
         }
     }
 
-    public double getSaldo(String numero) {
+    public double getSaldo(String numero) throws ContaNaoEncontradaException {
         ContaAbstrata conta = repositorio.procurar(numero);
 
         if (conta != null) {
@@ -39,7 +42,7 @@ public class Banco {
         return 0;
     }
 
-    public void renderJuros(String numero) {
+    public void renderJuros(String numero) throws ContaNaoEncontradaException {
         ContaAbstrata conta = repositorio.procurar(numero);
 
         if (conta != null) {
@@ -49,7 +52,7 @@ public class Banco {
         }
     }
 
-    public void renderBonus(String numero) {
+    public void renderBonus(String numero) throws ContaNaoEncontradaException {
         ContaAbstrata conta = repositorio.procurar(numero);
 
         if (conta instanceof ContaEspecial ce) {
@@ -58,7 +61,7 @@ public class Banco {
         }
     }
 
-    public void transferir(String origem, String destino, double valor) {
+    public void transferir(String origem, String destino, double valor) throws ContaNaoEncontradaException, SaldoInsuficienteException {
         ContaAbstrata contaOrigem = repositorio.procurar(origem);
         ContaAbstrata contaDestino = repositorio.procurar(destino);
 

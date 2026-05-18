@@ -14,13 +14,13 @@ public class RepositorioContasArray implements RepositorioContas {
     }
     
     @Override
-    public ContaAbstrata procurar(String numero) {
+    public ContaAbstrata procurar(String numero) throws ContaNaoEncontradaException {
         for (int i = 0; i < indice; i++) {
             if (contas[i].getNumero().equals(numero)) {
                 return contas[i];
             }
         }
-        return null;
+        throw new ContaNaoEncontradaException();
     }
     
     @Override
