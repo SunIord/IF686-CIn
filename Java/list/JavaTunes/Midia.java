@@ -28,4 +28,8 @@ public abstract class Midia {
     protected void incrementarTotalReproducoes() {
         totalReproducoes++;
     }
+    
+    // Getters para usar nas classes filhas 
+    public String getTitulo() {return titulo;}
+    public String getAutor()  {return autor;}
 }
