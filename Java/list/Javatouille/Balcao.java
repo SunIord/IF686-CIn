@@ -5,11 +5,13 @@ public class Balcao {
     private String nome;
     private int capacidade;
     private Queue<Ingrediente> ingredientes;
+    private boolean producaoEncerrada; // Evitar deadlock
 
     public Balcao(String nome, int capacidade) {
         this.nome = nome;
         this.capacidade = capacidade;
         this.ingredientes = new LinkedList<>();
+        this.producaoEncerrada = false;  
     }
 
     public synchronized void colocar(Ingrediente ingrediente) throws InterruptedException {
@@ -20,11 +22,23 @@ public class Balcao {
         notifyAll();
     }
 
-    public synchronized void retirar(Ingrediente ingrediente) throws InterruptedException { // Não entendi esse parâmetro
-        while (ingredientes.isEmpty()) {
+
+    public synchronized boolean retirar(Ingrediente ingrediente) throws InterruptedException { // Não entendi esse paramêtro
+        while (ingredientes.isEmpty() && !producaoEncerrada) {
             wait();
         }
+        
+        if (ingredientes.isEmpty()) {
+            return false;
+        }
+        
         ingredientes.poll();
+        notifyAll();
+        return true;
+    }
+    
+    public synchronized void encerrarProducao() {
+        this.producaoEncerrada = true;
         notifyAll();
     }
 

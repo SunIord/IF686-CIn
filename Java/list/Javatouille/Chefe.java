@@ -10,15 +10,17 @@
     @Override
     public void run() {
         int id = 1;
-        for (int i = 0; i < 5; i++) {
-            try {
+        try {
+            while (true) {
                 Thread.sleep(1000);
                 for (int j = 0; j < desempenho; j++) {
-                    balcao.retirar(new Ingrediente("Consumido_" + id++));
+                    if (!balcao.retirar(new Ingrediente("Consumido_" + id++))) {
+                        return; 
+                    }
                 }
-            } catch (InterruptedException e) {
-                break;
             }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 }
